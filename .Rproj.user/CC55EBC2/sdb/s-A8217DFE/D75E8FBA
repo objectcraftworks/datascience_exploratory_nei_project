@@ -1,0 +1,17 @@
+{
+    "contents" : "\n#common function for resue in all plots\n\nload_nei <- function() {\n data_url <-\"https://d396qusza40orc.cloudfront.net/exdata/data/NEI_data.zip\"\n zip_file <- \"./NEI_data.zip\"\n nei_file <- \"./data/summarySCC_PM25.rds\"\n\n\n## if data file doesn't exist, download, and unzip, loadRDS\n if(! file.exists(nei_file)) {\n  if(!file.exists(\"./data/\")) {\n    dir.create(\"./data/\")\n  }\n  \n  download.file(data_url, destfile=zip_file, method=\"curl\")\n  unzip(zip_file,exdir=\"./data\")\n }\n readRDS(nei_file)\n}",
+    "created" : 1432495308833.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2675416888",
+    "id" : "D75E8FBA",
+    "lastKnownWriteTime" : 1432500775,
+    "path" : "~/crafting/datasciencecourse/exploring_data2/load_data.R",
+    "project_path" : "load_data.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

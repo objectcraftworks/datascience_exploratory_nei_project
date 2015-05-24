@@ -1,0 +1,17 @@
+{
+    "contents" : "source(\"./load_data.R\")\n\nNEI <- load_nei()\n# sum of all sources by year\ntotalPMByYear <- aggregate(Emissions ~ year, data=NEI,sum)\n# convert to kilo tons\ntotalPMByYear$Emissions <- totalPMByYear$Emissions / 1000\n#plot\npng(\"./plot1.png\") # this creates 480X480px png file\n\nplot(totalPMByYear$year, totalPMByYear$Emissions,type=\"b\",\n     main=\"Total Fine particulate matter (PM2.5) emission in USA\",\n     xlab=\"Year\",\n     ylab=\"Fine particulate matter (PM2.5) in kilo tons\")\n\ndev.off()\n\n",
+    "created" : 1432496310222.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3131792795",
+    "id" : "6F093E57",
+    "lastKnownWriteTime" : 1432497945,
+    "path" : "~/crafting/datasciencecourse/exploring_data2/Plot1.R",
+    "project_path" : "Plot1.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,17 @@
+{
+    "contents" : "source(\"./load_data.R\")\nlibrary(ggplot2)\n\nNEI <- load_nei()\n\n#baltimore fips :24510\nbaltimore_nei <- subset(NEI,type == \"ON-ROAD\" & fips %in% c(\"24510\",\"06037\"))\n#labels for fips\nbaltimore_nei <- transform(baltimore_nei, fips=factor(fips))\n\ntotalPMByYear <- aggregate(Emissions ~ year +fips, data=baltimore_nei,sum)\n\n#plot\n\nplot <- ggplot( data=totalPMByYear,aes(year,Emissions,color=fips,group=fips)) +\n        geom_line() +\n        geom_point() +\n        labs(title=\"Total Fine particulate matter (PM2.5) emission from motor vehicles\\n in Baltimore and Los Angeles\") +\n        labs(x=\"Year\") +\n        labs(y=\"Fine particulate matter (PM2.5) in tons\") +\n        scale_colour_discrete(name  =\"Counties\",\n                        breaks=c(\"24510\", \"06037\"),\n                        labels=c(\"Baltimore City, MD\", \"Los Angeles County\")) \n  \n        \nggsave(plot,file=\"plot6.png\",width=7.89,height=5.01)\n",
+    "created" : 1432503829046.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1049473306",
+    "id" : "15A868CF",
+    "lastKnownWriteTime" : 1432507254,
+    "path" : "~/crafting/datasciencecourse/exploring_data2/Plot6.R",
+    "project_path" : "Plot6.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

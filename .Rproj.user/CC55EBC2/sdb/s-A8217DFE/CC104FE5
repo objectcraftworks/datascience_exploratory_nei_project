@@ -1,0 +1,17 @@
+{
+    "contents" : "source(\"./load_data.R\")\nlibrary(ggplot2)\n\nscc_file <- \"./data/Source_Classification_Code.rds\"\n\nNEI <- load_nei()\n\nSCC <- readRDS(scc_file)\n\n#coal source can be fetched from EI.Sector or Level.Three\nSCC.coal <-  SCC[grepl(\"Coal\",SCC$SCC.Level.Three),\"SCC\"]\nSCC.coal <- unique(as.character(SCC.coal))\n\nNEI.coal <- NEI[NEI$SCC %in% SCC.coal,]\n\ntotalPMFromCoalByYear <- aggregate(Emissions ~ year, data=NEI.coal,sum)\n\n## to kilo tons\ntotalPMFromCoalByYear$Emissions <- totalPMFromCoalByYear$Emissions / 1000\n\n#plot\n\nplot <- qplot(year, Emissions,data=totalPMFromCoalByYear, \n              geom=c(\"point\",\"line\") ,\n              main=\"Total Fine particulate matter (PM2.5) emissions from Coal Sources in USA\",\n              xlab=\"Year\",\n              ylab=\"Fine particulate matter (PM2.5) in Kilo tons\")\n\nggsave(plot,file=\"plot4.png\",width=7.89,height=5.01)\n",
+    "created" : 1432500103144.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "28250101",
+    "id" : "CC104FE5",
+    "lastKnownWriteTime" : 1432502996,
+    "path" : "~/crafting/datasciencecourse/exploring_data2/Plot4.R",
+    "project_path" : "Plot4.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

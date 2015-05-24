@@ -1,0 +1,17 @@
+{
+    "contents" : "source(\"./load_data.R\")\nlibrary(ggplot2)\n\nNEI <- load_nei()\n\n#baltimore fips :24510\nbaltimore_nei <- subset(NEI,fips == \"24510\")\n#labels for type\nbaltimore_nei <- transform(baltimore_nei, type=factor(type))\n\ntotalPMByYear <- aggregate(Emissions ~ year +type, data=baltimore_nei,sum)\n\n#plot\npng(\"./plot3.png\") # this creates 480X480px png file\n\nplot <- qplot(year, Emissions,data=totalPMByYear, \n       geom=c(\"point\",\"line\") ,\n      facets= . ~ type,\n     main=\"Total Fine particulate matter (PM2.5) emission in Baltimore,MD\",\n     xlab=\"Year\",\n     ylab=\"Fine particulate matter (PM2.5) in tons\")\n\nprint(plot) \n\ndev.off()\n\n",
+    "created" : 1432498498031.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1221319480",
+    "id" : "6AB2ACD6",
+    "lastKnownWriteTime" : 1432507266,
+    "path" : "~/crafting/datasciencecourse/exploring_data2/Plot3.R",
+    "project_path" : "Plot3.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
