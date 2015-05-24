@@ -18,7 +18,7 @@ plot <- ggplot( data=totalPMByYear,aes(year,Emissions,color=fips,group=fips)) +
         labs(title="Total Fine particulate matter (PM2.5) emission from motor vehicles\n in Baltimore and Los Angeles") +
         labs(x="Year") +
         labs(y="Fine particulate matter (PM2.5) in tons") +
-        scale_colour_discrete(name  ="Counties",
+        scale_colour_discrete(name  ="County",
                         breaks=c("24510", "06037"),
                         labels=c("Baltimore City, MD", "Los Angeles County")) 
   
