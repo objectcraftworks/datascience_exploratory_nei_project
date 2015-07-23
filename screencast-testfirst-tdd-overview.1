@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Quick overview of Test first TDD</title>
+    <meta name="description" content="This screencast covers TDD and can be used to educate non-tech stake holders and to motivate developers, to same understanding amongst the team members." />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/screen.css?v=96b7e3718a" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+
+    <link rel="canonical" href="http://www.objectcraftworks.com/screencast-testfirst-tdd-overview/" />
+    
+    <meta property="og:site_name" content="Object Craftworks" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Quick overview of Test first TDD" />
+    <meta property="og:description" content="This screencast covers TDD and can be used to educate non-tech stake holders and to motivate developers, to same understanding amongst the team members." />
+    <meta property="og:url" content="http://www.objectcraftworks.com/screencast-testfirst-tdd-overview/" />
+    <meta property="og:image" content="http://www.objectcraftworks.com/content/images/2015/03/4026467075_c632b10034_z-1.jpg" />
+    <meta property="article:published_time" content="2015-02-01T20:01:00.000Z" />
+    <meta property="article:modified_time" content="2015-07-23T22:14:04.826Z" />
+    <meta property="article:tag" content="TDD" />
+    <meta property="article:tag" content="Refactoring" />
+    <meta property="article:tag" content="Screencasts" />
+    <meta property="article:tag" content="Calculator" />
+    <meta property="article:tag" content="Taking Shape" />
+    <meta property="article:tag" content="ShapeUp" />
+    <meta property="article:tag" content="Iterating from the right place" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Quick overview of Test first TDD" />
+    <meta name="twitter:description" content="This screencast covers TDD and can be used to educate non-tech stake holders and to motivate developers, to same understanding amongst the team members." />
+    <meta name="twitter:url" content="http://www.objectcraftworks.com/screencast-testfirst-tdd-overview/" />
+    <meta name="twitter:image:src" content="http://www.objectcraftworks.com/content/images/2015/03/4026467075_c632b10034_z-1.jpg" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Object Craftworks",
+    "author": {
+        "@type": "Person",
+        "name": "Prasad Narravula",
+        "url": "http://www.objectcraftworks.com/author/prasad",
+        "sameAs": null,
+        "description": null
+    },
+    "headline": "Quick overview of Test first TDD",
+    "url": "http://www.objectcraftworks.com/screencast-testfirst-tdd-overview/",
+    "datePublished": "2015-02-01T20:01:00.000Z",
+    "dateModified": "2015-07-23T22:14:04.826Z",
+    "image": "http://www.objectcraftworks.com/content/images/2015/03/4026467075_c632b10034_z-1.jpg",
+    "keywords": "TDD, Refactoring, Screencasts, Calculator, Taking Shape, ShapeUp, Iterating from the right place",
+    "description": "This screencast covers TDD and can be used to educate non-tech stake holders and to motivate developers, to same understanding amongst the team members."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.6" />
+    <link rel="alternate" type="application/rss+xml" title="Object Craftworks" href="http://www.objectcraftworks.com/rss/" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42416416-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+<body class="post-template tag-tdd tag-refactoring tag-screencasts tag-calculator tag-taking-shape tag-shapeup tag-iterating-from-the-right-place nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="screencast-testfirst-tdd-overview.1#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+            <li class="nav-home" role="presentation"><a href="http://www.objectcraftworks.com/">Home</a></li>
+    </ul>
+    <a class="subscribe-button icon-feed" href="http://www.objectcraftworks.com/rss/">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+    <div class="site-wrapper">
+        
+
+
+<header class="main-header post-head " style="background-image: url(content/images/2015/03/4026467075_c632b10034_z-1.jpg)">
+    <nav class="main-nav overlay clearfix">
+        
+            <a class="menu-button icon-menu" href="screencast-testfirst-tdd-overview.1#"><span class="word">Menu</span></a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-tdd tag-refactoring tag-screencasts tag-calculator tag-taking-shape tag-shapeup tag-iterating-from-the-right-place featured">
+
+        <header class="post-header">
+            <h1 class="post-title">Watch Code Taking Shape with TDD</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2015-02-01">01 February 2015</time>  on <a href="tag/tdd/index.html">TDD</a>, <a href="tag/refactoring/index.html">Refactoring</a>, <a href="tag/screencasts/index.html">Screencasts</a>, <a href="tag/calculator/index.html">Calculator</a>, <a href="tag/taking-shape/index.html">Taking Shape</a>, <a href="tag/shapeup/index.html">ShapeUp</a>, <a href="tag/iterating-from-the-right-place/index.html">Iterating from the right place</a>
+		<a href="screencast-testfirst-tdd-overview.1#disqus_thread">Comments</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>In this screencast, we will cover the process of the test first Test Driven Development (TDD). TDD is one of those skills that take moment to learn, life long to master. This screencast is to just give you an overview.</p>
+
+<p>For me, it has always been inspirational to watch things taking shape. In that spirit, this screencast is created, and can be used: </p>
+
+<ul>
+<li>To educate non-tech stake holders and others.</li>
+<li>To motivate developers.</li>
+<li>To bring consistency among team members of the definition of test first TDD.</li>
+</ul>
+
+<p>A simple math problem is used to demonstrate the concept. Don't let the code intimidate you if you are a non-tech person, instead, focus on the process and how the code(both tests, and the code) is taking shape.</p>
+
+<iframe width="854" height="510" src="https://www.youtube.com/embed/DwazlZS5D4g" frameborder="0" allowfullscreen></iframe>  
+
+<p>We will develop a calculator with following three capabilities:</p>
+
+<ol>
+<li>Addition  </li>
+<li>Division  </li>
+<li>Factorial</li>
+</ol>
+
+<h4 id="redgreenrefactorcycle">Red/Green/Refactor Cycle</h4>
+
+<p>You will see a repeatitive Red/Green/Refactor cycle, frequently switching between test and code. </p>
+
+<p>This cycle follows 3 steps:  </p>
+
+<blockquote>
+  <ol>
+  <li>Write a failing test (<code>Red</code>)</li>
+  <li>Make it pass (mostly with fake implementation) (<code>Green</code>)  </li>
+  <li>Refactor (<code>Refactor</code>)</li>
+  </ol>
+</blockquote>
+
+<h4 id="idepluginsframeworksused">IDE/Plugins, Frameworks used</h4>
+
+<ol>
+<li>Visual Studio 2013 Profressional Edition  </li>
+<li>NUnit framework  </li>
+<li>Resharper  </li>
+<li>Dotcover  </li>
+<li>Continuous Test  </li>
+<li>ViEmu </li>
+</ol>
+
+<p><em>Attribution: Thanks to <a href="https://www.flickr.com/people/telmo32/">telmo32</a> for the shop image.</em></p>
+      
+        </section>
+      
+   <footer class="post-footer">
+
+
+            <section class="author">
+                       
+    <h4><a href="author/prasad/index.html">Prasad Narravula</a></h4>
+
+                    <p>Read <a href="author/prasad/index.html">more posts</a> by this author.</p>
+                               <div class="author-meta">
+                    
+                    
+                </div>
+                 <p class="alert alert-info" style="background:#d9edf7;color:#31708f;border-color:#bce8f1;padding:2px"><a href="http://eepurl.com/bhBYj1">Subscribe</a> to our mailing list for updates.</p>
+
+
+			</section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/share?text=Watch%20Code%20Taking%20Shape%20with%20TDD&amp;url=http://www.objectcraftworks.com/screencast-testfirst-tdd-overview/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://www.objectcraftworks.com/screencast-testfirst-tdd-overview/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://www.objectcraftworks.com/screencast-testfirst-tdd-overview/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+        </footer>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'objectcraftworkscom';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </article>
+
+</main>
+
+<aside class="read-next">
+    <a class="read-next-story " style="background-image: url(content/images/2015/06/8812420553_913aea5b13_b-1.jpg)" href="usefulness-of-duplicate-code-data/index.html">
+        <section class="post">
+            <h2>Usefulness of Duplicated Code Data</h2>
+            <p>Duplicated code, left unchecked, becomes a maintenance nightmare. Periodic code reviews can help keep tabs on duplicates. In addition&hellip;</p>
+        </section>
+    </a>
+</aside>
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://www.objectcraftworks.com">Object Craftworks</a> &copy; 2015</section>
+            <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
+        </footer>
+
+    </div>
+
+    <script src="public/jquery.js?v=96b7e3718a"></script>
+
+    <script type="text/javascript" src="assets/js/jquery.fitvids.js?v=96b7e3718a"></script>
+    <script type="text/javascript" src="assets/js/index.js?v=96b7e3718a"></script>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'objectcraftworkscom';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

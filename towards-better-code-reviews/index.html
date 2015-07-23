@@ -1,0 +1,364 @@
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Iterate towards better code reviews</title>
+    <meta name="description" content="When code review meetings derail from the purpose, they become painful and unproductive. We will cover DONTs and  DOs that make code reviews efficient">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=96b7e3718a">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,400">
+
+    <link rel="canonical" href="http://www.objectcraftworks.com/towards-better-code-reviews/">
+    
+    <meta property="og:site_name" content="Object Craftworks">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Iterate towards better code reviews">
+    <meta property="og:description" content="When code review meetings derail from the purpose, they become painful and unproductive. We will cover DONTs and  DOs that make code reviews efficient">
+    <meta property="og:url" content="http://www.objectcraftworks.com/towards-better-code-reviews/">
+    <meta property="og:image" content="http://www.objectcraftworks.com/content/images/2015/07/4136079364_bb2bb30935_o.jpg">
+    <meta property="article:published_time" content="2015-07-15T00:19:00.000Z">
+    <meta property="article:modified_time" content="2015-07-23T22:14:23.776Z">
+    <meta property="article:tag" content="Refactoring">
+    <meta property="article:tag" content="Code Reviews">
+    <meta property="article:tag" content="Shared Vocabulary">
+    <meta property="article:tag" content="Code Smells">
+    <meta property="article:tag" content="NDepend">
+    <meta property="article:tag" content="Resharper">
+    <meta property="article:tag" content="Coding Guidelines">
+    <meta property="article:tag" content="Premature Optimizations">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Iterate towards better code reviews">
+    <meta name="twitter:description" content="When code review meetings derail from the purpose, they become painful and unproductive. We will cover DONTs and  DOs that make code reviews efficient">
+    <meta name="twitter:url" content="http://www.objectcraftworks.com/towards-better-code-reviews/">
+    <meta name="twitter:image:src" content="http://www.objectcraftworks.com/content/images/2015/07/4136079364_bb2bb30935_o.jpg">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Object Craftworks",
+    "author": {
+        "@type": "Person",
+        "name": "Prasad Narravula",
+        "url": "http://www.objectcraftworks.com/author/prasad",
+        "sameAs": null,
+        "description": null
+    },
+    "headline": "Iterate towards better code reviews",
+    "url": "http://www.objectcraftworks.com/towards-better-code-reviews/",
+    "datePublished": "2015-07-15T00:19:00.000Z",
+    "dateModified": "2015-07-23T22:14:23.776Z",
+    "image": "http://www.objectcraftworks.com/content/images/2015/07/4136079364_bb2bb30935_o.jpg",
+    "keywords": "Refactoring, Code Reviews, Shared Vocabulary, Code Smells, NDepend, Resharper, Coding Guidelines, Premature Optimizations",
+    "description": "When code review meetings derail from the purpose, they become painful and unproductive. We will cover DONTs and  DOs that make code reviews efficient"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.6">
+    <link rel="alternate" type="application/rss+xml" title="Object Craftworks" href="http://www.objectcraftworks.com/rss/">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42416416-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+<body class="post-template tag-refactoring tag-code-reviews tag-shared-vocabulary tag-code-smells tag-ndepend tag-resharper tag-coding-guidelines tag-premature-optimizations nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="../towards-better-code-reviews.1#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+            <li class="nav-home" role="presentation"><a href="http://www.objectcraftworks.com/">Home</a></li>
+    </ul>
+    <a class="subscribe-button icon-feed" href="http://www.objectcraftworks.com/rss/">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+    <div class="site-wrapper">
+        
+
+
+<header class="main-header post-head " style="background-image: url(../content/images/2015/07/4136079364_bb2bb30935_o.jpg)">
+    <nav class="main-nav overlay clearfix">
+        
+            <a class="menu-button icon-menu" href="../towards-better-code-reviews.1#"><span class="word">Menu</span></a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-refactoring tag-code-reviews tag-shared-vocabulary tag-code-smells tag-ndepend tag-resharper tag-coding-guidelines tag-premature-optimizations">
+
+        <header class="post-header">
+            <h1 class="post-title">Iterate towards better Code Reviews</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2015-07-14">14 July 2015</time>  on <a href="../tag/refactoring/">Refactoring</a>, <a href="../tag/code-reviews/">Code Reviews</a>, <a href="../tag/shared-vocabulary/">Shared Vocabulary</a>, <a href="../tag/code-smells/">Code Smells</a>, <a href="../tag/ndepend/">NDepend</a>, <a href="../tag/resharper/">Resharper</a>, <a href="../tag/coding-guidelines/">Coding Guidelines</a>, <a href="../tag/premature-optimizations/">Premature Optimizations</a>
+		<a href="../towards-better-code-reviews.1#disqus_thread">Comments</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>When code review meetings derail from the purpose, they become painful and unproductive. We will cover in this post how to make them focused and effective sessions by eliminating DONTs and doing more of DOs. Though the post focuses on the .NET environment, the principles apply to any object-oriented environments.</p>
+
+<blockquote>
+  <p>A process cannot substitute a skill, but can enable the continuous improvement.</p>
+</blockquote>
+
+<p>The software design is a team effort. As the code is developed, a developer makes many design decisions on a daily basis such as adding methods, creating associations between classes, use of switch statements and so on.. Whether these are good ones is a different problem. When a team comes to embrace this reality, it finds a need for the different type of technical leaders. For example, <a href="http://martinfowler.com/ieeeSoftware/whoNeedsArchitect.pdf">Architectus Oryzus</a> is such a leader that enables team design activities while acting as a guide when needed. Martin Fowler <a href="http://martinfowler.com/ieeeSoftware/whoNeedsArchitect.pdf">writes</a> that a guide is a more experienced and skillful team member, who teaches other team members to fend better for themselves yet is always there for the tricky stuff.</p>
+
+<p>Depending on skill levels and understanding of the business domain, there would be bad decisions. You will miss teachable moments if you try to avoid them by taking control over the design. The reviews present these teachable moments. Pair Programming is another such practice that presents the opportunities for mentoring. Both the reviews and the pairing improve collective code ownership.</p>
+
+<p>Code Consistency, taken care by individual programmers, helps the team to focus on the design and the functionality. Automate the consistency related guidelines as much as possible.</p>
+
+<p>You will see how code reviews become focussed with the little effort. You will find practical guidance on continuous improvement as essential skills need learning and practice.</p>
+
+<h2 id="takecareoftypos">Take care of typos</h2>
+
+<p>Tools such as <a href="http://blog.jetbrains.com/dotnet/2013/01/14/respeller-a-spell-checking-plugin-for-resharper">Respeller</a>, a R# plugin, can help in finding the typos as they happen. It checks for misspelled words in comments, strings, and identifiers- classes, methods, variables and so on.. </p>
+
+<p>If needed, you can ask for a quick review from one or two people. Early reviews of public contracts prevent misspellings from reaching the world.</p>
+
+<h2 id="fixcodeformattingissuesearlyon">Fix code formatting issues early on</h2>
+
+<p>Formatting issues such as indentation, blank lines, and spaces irritate the team.  R# formatting feature works well in cleaning up the formatting.</p>
+
+<p><img src="../content/images/2015/07/Resharper_Formatting.png" alt="Resharper Formatting Options"></p>
+
+<p>Team level <a href="http://%20www.jetbrains.com/resharper/help/Sharing_Configuration_Options.html">R# settings</a> help in maintaining consistency.</p>
+
+<p><img src="../content/images/2015/07/Screen-Shot-2015-07-09-at-6-16-13-PM.png" alt="Image July 9 6:16pm"></p>
+
+<h2 id="documentnamingconventionsandcodingstyles">Document naming conventions and coding styles</h2>
+
+<p>It is important to compile the coding guidelines at the starting of the project.  <a href="https://msdn.microsoft.com/en-us/library/ms229002(v=vs.110).aspx">Framework defined guidelines</a> are a good starting point. Even if an enterprise-wide document is already available, the team still should go through it. The collaborative effort promotes collective code ownership. Code consistency depends on the buy-in from the entire team; otherwise it becomes the focus of the code reviews making them inefficient.</p>
+
+<h6 id="achieveconsistency">Achieve consistency</h6>
+
+<p>There are tools you could use to create shorter feedback loops. R#, with <a href="https://www.jetbrains.com/resharper/documentation/comparisonMatrix_R9_vs2015.html">extensive rule sets and auto correcting capabilities</a>, tops the list.</p>
+
+<p><img src="../content/images/2015/07/Naming_Styles_Resharper.png" alt="Resharper Naming Conventions"></p>
+
+<p>You can customize default naming styles and share them across the team using the <a href="https://www.jetbrains.com/resharper/features/code_formatting.html#Code_Style_Configuration_and_Sharing">custom profiles</a>. Stylecop users can benefit from R# auto fixes using <a href="https://stylecopforresharper.codeplex.com/">Resharper.Stylecop</a> plugin.</p>
+
+<h2 id="documentgeneralcodingguidelines">Document general coding guidelines</h2>
+
+<p>Teams compile general coding guidelines, DOs and DONTs, such as preferring exceptions over return codes, implementing IDisposable if a class contains disposable fields and so on.., to make the expectations explicit. You can refer heuristics in Bob Martin's <a href="http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">Clean Code</a> book. People at <a href="http://csharpguidelines.codeplex.com/">csharpguidelines.com</a> compiled the coding guidelines including some best practices, and the R# settings targeting these coding styles.</p>
+
+<h4 id="achieveconsistency">Achieve consistency</h4>
+
+<p>As with the styles/naming conventions, team should strive to write code following the heuristics. Teams waste enormous amout of time in enforcing the guidelines through the reviews. A tool is helpful if it reminds you these guidelines as you write the code.  NDepend comes with a set of <a href="http://www.ndepend.com/default-rules/webframe.html">code rules</a>. You can write new or customize them. As everyone in the team may not know all the guidelines,  you could start with what the team can follow and then you could drive continuous improvement over few iterations. Iteration/Sprint goals are best suited to learn and practice these rules before enabling them. It helps to start with green NDepend's status circle (in the IDE status bar). Over few iterations, you can add rules progressively as the team gets comfortable.</p>
+
+<p><img src="../content/images/2015/07/NDepend_Rules_Red.png" alt="NDepend Code Rules -Reg-Green Status"></p>
+
+<p>This immediate feedback reduces the knowledge gap and reminds people when they take any shortcuts. If the developers use all they know that itself is a big improvement.</p>
+
+<h2 id="codecommenting">Code commenting</h2>
+
+<p>Review meetings driven code commenting efforts lack the consistency. Ad-hoc comments lack consistency and a samaritan effort is suboptimal. It is a challenging task to keep the comments alive throughout the project cycle.</p>
+
+<p>The team should name the things to improve the code readability. You should add comments where necessary explaining why. Redundant, superfluous comments are such a waste of time. A Team that focuses on the readability of the tests  and the code gets better ROI. One side-benefit of TDD is that the tests become a reliable documentation. Intention revealing tests along with good documentation help your code users outside your team.</p>
+
+<pre><code>If the code is the design, then tests are the best documentation you could give.
+</code></pre>
+
+<p><a href="http://submain.com/products/ghostdoc.aspx">GhostDoc plugin</a> automates the routine tasks of inline XML commenting.</p>
+
+<p>It is necessary to make the strategic decision early on, and the team should strive to achieve consistency throughout the project. <code>There is no free lunch</code>  applies to code comments, and the effort is not cheap either. The team should keep this effort in mind during estimating sessions. Consistency is the key.</p>
+
+<h2 id="avoidprematureoptimizations">Avoid Premature Optimizations</h2>
+
+<p>If there is one thing you should keep out of the reviews, that should be <a href="http://c2.com/cgi/wiki?PrematureOptimization">premature optimizations</a>.</p>
+
+<blockquote>
+  <p>"Programmers waste enormous amounts of time thinking about, or worrying about, the speed of non critical parts of their programs, and these attempts at efficiency actually have a strong negative impact when debugging and maintenance are considered. We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. Yet we should not pass up our opportunities in that critical 3%."
+  - <a href="http://web.archive.org/web/20130731202547/http://pplab.snu.ac.kr/courses/adv_pl05/papers/p261-knuth.pdf">Donald Knuth</a></p>
+</blockquote>
+
+<p>Don’t let the team fall into guesswork. Get the story done before carrying out optimization efforts.  Most often, the optimizations efforts are started by defects. But SLAs should drive the performance efforts. SLAs are constraints on the stories. Find them out early in the project and make them public and visible in the team area. Use performance stats and profiling to find the critical 3% effort.</p>
+
+<p>To avoid <a href="http://c2.com/cgi/wiki?UniformlySlowCode">uniformly slow code</a>, the team can compile the platform-specific performance idioms and add them to the guidelines document. Using StringBuilder for complex string operations is one such item, for example. Iterative development makes it easier to spot any such code behavior before going too far.</p>
+
+<blockquote>
+  <p>Now comes the meaty stuff that requires effort to learn and practice to gain the expertise.</p>
+</blockquote>
+
+<h2 id="takecareofcodeduplicatesearlyon">Take care of code duplicates early on</h2>
+
+<p>Code reviews are too late to find the duplicates. See my <a href="../usefulness-of-duplicate-code-data/">post</a> for how duplicate finders assist developers as they write the code.</p>
+
+<p><img src="../content/images/2015/06/Screen-Shot-2015-03-20-at-5-32-26-PM.png" alt="Duplicate code finders"></p>
+
+<h2 id="developsharedvocabulary">Develop Shared Vocabulary</h2>
+
+<p>Arbitrary language creates conflicts making the meetings bit painful to attend next time. The team should guard against language ambiguities such as <a href="http://martinfowler.com/bliki/SemanticDiffusion.html">semantic diffusion</a>, and flaccid words. It should put effort to come to common understanding of the key vocabulary.  For example, the word <strong>“Refactoring"</strong> is being used to describe various things, weakening its intended use. Martin Fowler calls this <a href="http://martinfowler.com/bliki/RefactoringMalapropism.html">RefactoringMalapropism</a>.</p>
+
+<p>The team that speaks shared vocabulary is set for the success. The power of shared vocabulary can do wonders in other areas too.<a href="http://localhost:2368/towards-better-code-reviews/davegrayinfo.com">Dave Gray</a> created this wonderful <a href="https://flic.kr/p/NnrMV">graphic</a>.</p>
+
+<p><img src="../content/images/2015/07/language.jpg" alt="Language"></p>
+
+<p>For better code reviews, the team needs to develop the vocabulary to talk about the issues and their available remedies. Luckily, You need not reinvent the language, as, since XP, there are several sources. Code smells, design smells and the refactorings that fix these issues are a good starting point. SOLID principles can help in refactoring and designing activities. Once you gain the expertise in the design patterns usage, You will have a rich vocabulary.</p>
+
+<p>Martin Fowler covered about code smells in his <a href="http://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672">Refactoring</a> book. This vocabulary helps in communicating the code troubles, and the appropriate refactorings.</p>
+
+<p>The team should gain the fluency. A culture that supports the expressions in such rich vocabulary is essential to agile maturity. The culture should be mindful of the mixed skill level. The leadership should enable the environment for experiential learning. With such common understanding, the team organically opts for the pair programming.</p>
+
+<p>Here are few examples of expressions:</p>
+
+<p>When you see minor changes to several classes, you could say</p>
+
+<blockquote>
+  <p>Looking at the changes you just made, we have this behavior all over the place. It is a shotgun surgery. Let's inline this class.</p>
+</blockquote>
+
+<p>When a class is too much dependent on other classes:</p>
+
+<blockquote>
+  <p>With this change, class Foo have just become a feature envy. Let's extract this part and then move it to that class.</p>
+</blockquote>
+
+<p>When someone overzealously applied OCP principle:</p>
+
+<blockquote>
+  <p>This instantiation does not need a separate factory now. We can take the first bullet, and wait for the actual need. One less indirection is always good.</p>
+</blockquote>
+
+<p>As you see this is much effective than what you hear typically <em>I like this, or don't like that</em>. Once a team gets comfortable with the <a href="http://refactoring.com/catalog/">Refactoring Catalog</a> and the awareness of code smells, its code reviews become much shorter and effective.</p>
+
+<h2 id="managecodewithmetrics">Manage code with metrics</h2>
+
+<p><code>"You can’t control if you can’t measure"</code> writes Tom Demarco. Metrics based vocabulary makes the code management a team activity. NDepend is a handy tool to calculate the <a href="http://www.ndepend.com/docs/code-metrics">metrics</a>. With this tool, you can create the shorter feedback loops by turning expectations into code rules. Its status circle, which is in the IDE status bar, will turn red as soon as violation happen. You can also turn these code rules into critical rules to fail the build whenever the metrics cross the thresholds. For example, you can write a code rule to fail the build when LOC of any method crosses a threshold value let’s say seven.</p>
+
+<p>Here is a <a href="http://www.hanselman.com/blog/content/binary/NDepend%20metrics%20placemats%201.1.pdf">metrics placemat</a> for your reference.</p>
+
+<p><img src="../content/images/2015/07/Screen-Shot-2015-07-15-at-9-11-44-PM.png" alt="Metrics placemat"></p>
+
+<h2 id="dontletthebadcodepileup">Don't let the bad code pile up</h2>
+
+<p>The refactoring in a brownfield project can overwhelm, no matter what you do, there will be code smells. If you allow them to happen, the code further deteriorates. As <a href="https://pragprog.com/the-pragmatic-programmer/extracts/software-entropy">Broken Window Theory</a> states, bad design piles up. Any time we take a shortcut, we lose an opportunity to hone our skills.</p>
+
+<p>One approach that works well is <strong>"from now onwards"</strong>. The idea is simple; you would create a baseline to track the quality of the code for all the present and future code changes to make sure you are not making it worse. Continuous improvement becomes fun and brings motivation from the job satisfaction. It creates <em>positive reinforcing loop</em>.</p>
+
+<p>You can use NDepend to create the <a href="http://www.ndepend.com/docs/code-diff-in-visual-studio#Baseline">baseline</a>. With metrics, code rules make <em>from now on</em> goals measurable. For example, the goal such as the distance from the main sequence, measuring stability and abstractness, of module X, should not exceed standard deviation of 1, is easy to measure and track.</p>
+
+<p><img src="../content/images/2015/07/Screen-Shot-2015-07-15-at-5-05-37-PM-1.png" alt="NDepend from now on rules"></p>
+
+<h2 id="wrapup">Wrap-up</h2>
+
+<p>Items we covered that make code reviews focussed and effective:</p>
+
+<ul>
+<li>Embrace the design as a team activity and create the culture of continuous learning.</li>
+<li>Document coding guidelines, naming styles,  formatting, and performance idiom.</li>
+<li>Don't wait for the code reviews; Take care of typos, formatting, naming conventions, general coding guidelines, and code duplicates, as the code is being developed.</li>
+<li>Use tools to achieve consistency and to let the machines do the dirty work.</li>
+<li>Avoid premature optimizations. SLAs, profiling, and performance tests should drive optimization efforts. Make SLAs public and add them as constraints on the stories.</li>
+<li>Set the expectations early on the project and aim for shorter feedback loops. For certain activities, the code reviews may be too late.</li>
+<li>Develop a shared vocabulary for the design activities. Code smells, OO metrics, the refactoring catalog, and the design patterns are the great language sources.</li>
+</ul>
+
+<p><em>Attribution: Thanks to <a href="https://www.flickr.com/photos/prashantmaxsteel_sx110/4136079364/">Prashant Menon</a> for the ants team play image.</em></p>
+      
+        </section>
+      
+   <footer class="post-footer">
+
+
+            <section class="author">
+                       
+    <h4><a href="../author/prasad/">Prasad Narravula</a></h4>
+
+                    <p>Read <a href="../author/prasad/">more posts</a> by this author.</p>
+                               <div class="author-meta">
+                    
+                    
+                </div>
+                 <p class="alert alert-info" style="background:#d9edf7;color:#31708f;border-color:#bce8f1;padding:2px"><a href="http://eepurl.com/bhBYj1">Subscribe</a> to our mailing list for updates.</p>
+
+
+			</section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/share?text=Iterate%20towards%20better%20Code%20Reviews&amp;url=http://www.objectcraftworks.com/towards-better-code-reviews/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://www.objectcraftworks.com/towards-better-code-reviews/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://www.objectcraftworks.com/towards-better-code-reviews/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+        </footer>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'objectcraftworkscom';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </article>
+
+</main>
+
+<aside class="read-next">
+    <a class="read-next-story " style="background-image: url(../content/images/2015/07/5599297399_8b1bcc8091_o.jpg)" href="../pull-shared-vocabulary/">
+        <section class="post">
+            <h2>Use this Popular Word to Pull the Shared Vocabulary</h2>
+            <p>As covered in my post, iterate towards better code reviews, the shared vocabulary is essential. When it comes to…</p>
+        </section>
+    </a>
+    <a class="read-next-story prev " style="background-image: url(../content/images/2015/06/8812420553_913aea5b13_b-1.jpg)" href="../usefulness-of-duplicate-code-data/">
+        <section class="post">
+            <h2>Usefulness of Duplicated Code Data</h2>
+            <p>Duplicated code, left unchecked, becomes a maintenance nightmare. Periodic code reviews can help keep tabs on duplicates. In addition…</p>
+        </section>
+    </a>
+</aside>
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://www.objectcraftworks.com">Object Craftworks</a> © 2015</section>
+            <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
+        </footer>
+
+    </div>
+
+    <script src="../public/jquery.js?v=96b7e3718a"></script>
+
+    <script type="text/javascript" src="../assets/js/jquery.fitvids.js?v=96b7e3718a"></script>
+    <script type="text/javascript" src="../assets/js/index.js?v=96b7e3718a"></script>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'objectcraftworkscom';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
